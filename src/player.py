@@ -2,8 +2,9 @@
 
 
 class Player:
-    def __init__(self, room):
+    def __init__(self, room, move):
         self.room = room
+        self.move = move
     
     def __str__(self):
         return f'{self.room}'

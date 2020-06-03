@@ -7,4 +7,4 @@ class Room:
         self.description = description
     
     def __str__(self):
-        return f"You are in the {self.name}"
+        return f"\nYou are in the {self.name}"

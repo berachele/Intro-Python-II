@@ -39,7 +39,7 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
-player = Player(room['outside'])
+player = Player(room['outside'], 'none')
 print(player)
 # Write a loop that:
 #
@@ -52,3 +52,31 @@ print(player)
 #
 # If the user enters "q", quit the game.
 
+print("\nUse your keyboard to command your character:\n   'n' goes North \n   'e' goes East\n   's' goes South\n   'w' goes West\n   and 'q' QUIT's the Game\nEnjoy your Adventure! ")
+# player.move = instructions
+
+quit_game = False
+
+while not quit_game:
+
+    player.move = input()
+
+    if player.move == 'n':
+        player.room = player.room.n_to
+        print(player)
+
+    if player.move == 'e':
+        player.room = player.room.e_to
+        print(player)
+
+    if player.move == 's':
+        player.room = player.room.s_to
+        print(player)
+
+    if player.move == 'w':
+        player.room = player.room.w_to
+        print(player)
+
+    if player.move == 'q':
+        print('Have a nice day!')
+        quit_game = True
