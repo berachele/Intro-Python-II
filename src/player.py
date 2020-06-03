@@ -2,11 +2,11 @@
 
 
 class Player:
-    def __init__(self, room, move):
-        self.room = room
+    def __init__(self, currentRoom, move):
+        self.currentRoom = currentRoom
         self.move = move
     
     def __str__(self):
-        return f'{self.room}'
+        return f'{self.currentRoom}'
         
     
