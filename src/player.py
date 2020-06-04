@@ -2,9 +2,10 @@
 
 
 class Player:
-    def __init__(self, currentRoom, move):
+    def __init__(self, currentRoom, move, pouch=[]):
         self.currentRoom = currentRoom
         self.move = move
+        self.pouch = pouch
     
     def __str__(self):
         return f'{self.currentRoom}'
@@ -14,5 +15,14 @@ class Player:
             self.currentRoom = getattr(self.currentRoom, f'{self.move}_to')
             print(self.currentRoom)
             print(self.currentRoom.description)
+            self.currentRoom.showItems()
         else:
-            print("Error! You can't move in that direction. Try again. ")
+            print("\nError! You can't move in that direction. Try again. ")
+
+    def grabItem(self, itemName):
+        self.pouch.append(itemName)
+        return f"Successfully added {itemName} to pouch!"
+
+    def dropItem(self, itemName):
+        self.pouch.remove(itemName)
+        return f"You dropped {itemName} from pouch."

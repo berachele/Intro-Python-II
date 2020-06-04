@@ -1,5 +1,6 @@
 from room import Room
 from player import Player
+from item import Item
 
 # Declare all the rooms
 
@@ -8,11 +9,11 @@ room = {
                      "North of you, the cave mount beckons"),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
-passages run north and east."""),
+passages run north and east.""", [Item("sword", "slicer of death and cheese")]),
 
     'overlook': Room("Grand Overlook", """A steep cliff appears before you, falling
 into the darkness. Ahead to the north, a light flickers in
-the distance, but there is no way across the chasm."""),
+the distance, but there is no way across the chasm.""", [Item("diamond", "very shiny")]),
 
     'narrow':   Room("Narrow Passage", """The narrow passage bends here from west
 to north. The smell of gold permeates the air."""),
@@ -36,6 +37,10 @@ room['treasure'].s_to = room['narrow']
 
 #
 # Main
+
+
+#Testing Zone
+
 
 # Make a new player object that is currently in the 'outside' room.
 player = Player(room['outside'], 'none')
@@ -62,6 +67,6 @@ while not quit_game:
     if player.move == 'q':
         print('Until next time, your adventure awaits!')
         quit_game = True
-        
+
     else:
         player.restrict()
