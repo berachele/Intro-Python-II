@@ -9,4 +9,10 @@ class Player:
     def __str__(self):
         return f'{self.currentRoom}'
         
-    
+    def restrict(self):
+        if hasattr(self.currentRoom, f'{self.move}_to'):
+            self.currentRoom = getattr(self.currentRoom, f'{self.move}_to')
+            print(self.currentRoom)
+            print(self.currentRoom.description)
+        else:
+            print("Error! You can't move in that direction. Try again. ")

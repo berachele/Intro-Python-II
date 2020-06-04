@@ -36,7 +36,6 @@ room['treasure'].s_to = room['narrow']
 
 #
 # Main
-#
 
 # Make a new player object that is currently in the 'outside' room.
 player = Player(room['outside'], 'none')
@@ -60,29 +59,9 @@ while not quit_game:
 
     player.move = input('I want to move: ')
 
-    if player.move == 'n':
-        # if player.currentRoom == None:
-        #     print("Error! You can't move in that direction. Try again")
-        # else: 
-            player.currentRoom = player.currentRoom.n_to
-            print(player)
-            print(player.currentRoom.description)
-
-    if player.move == 'e':
-        player.currentRoom = player.currentRoom.e_to
-        print(player)
-        print(player.currentRoom.description)
-
-    if player.move == 's':
-        player.currentRoom = player.currentRoom.s_to
-        print(player)
-        print(player.currentRoom.description)
-
-    if player.move == 'w':
-        player.currentRoom = player.currentRoom.w_to
-        print(player)
-        print(player.currentRoom.description)
-
     if player.move == 'q':
         print('Until next time, your adventure awaits!')
         quit_game = True
+        
+    else:
+        player.restrict()
