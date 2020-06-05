@@ -11,6 +11,13 @@ class Room:
         return f"\nYou are in the {self.name}"
 
     def showItems(self):
-        print("\nIn this room you see:")
         for item in self.itemList:
-            print(f"{item}\n")
+            print(f"\nYou see a {item}\n")
+
+    def add(self, itemName):
+        self.itemList.append(itemName)
+        return itemName
+
+    def remove(self, itemName):
+        self.itemList.remove(itemName)
+        return itemName

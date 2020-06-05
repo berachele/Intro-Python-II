@@ -38,7 +38,6 @@ room['treasure'].s_to = room['narrow']
 #
 # Main
 
-
 #Testing Zone
 
 
@@ -62,9 +61,20 @@ quit_game = False
 
 while not quit_game:
 
-    player.move = input('I want to move: ')
+    player.move = input('I want to: ').strip().split(" ")
+    firstChar = player.move[0]
+    player.move = firstChar[0]
 
-    if player.move == 'q':
+#currently not working--getting Error that I can't get there--change restrict code?
+    # if len(firstChar) == 2:
+    #     if firstChar == 'get ':
+    #         player.grabItem({Item.itemName})
+    #         player.currentRoom.itemList.remove({Item.itemName})
+    #     else:
+    #         player.dropItem({Item.itemName})
+    #         player.currentRoom.itemList.add({Item.itemName})
+
+    if firstChar == 'q':
         print('Until next time, your adventure awaits!')
         quit_game = True
 
