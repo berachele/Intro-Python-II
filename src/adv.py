@@ -1,4 +1,6 @@
 from room import Room
+from player import Player
+from item import Item
 
 # Declare all the rooms
 
@@ -7,11 +9,11 @@ room = {
                      "North of you, the cave mount beckons"),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
-passages run north and east."""),
+passages run north and east.""", [Item("sword", "slicer of death and cheese")]),
 
     'overlook': Room("Grand Overlook", """A steep cliff appears before you, falling
 into the darkness. Ahead to the north, a light flickers in
-the distance, but there is no way across the chasm."""),
+the distance, but there is no way across the chasm.""", [Item("diamond", "very shiny")]),
 
     'narrow':   Room("Narrow Passage", """The narrow passage bends here from west
 to north. The smell of gold permeates the air."""),
@@ -35,10 +37,14 @@ room['treasure'].s_to = room['narrow']
 
 #
 # Main
-#
+
+#Testing Zone
+
 
 # Make a new player object that is currently in the 'outside' room.
-
+player = Player(room['outside'], 'none')
+print(player)
+print(player.currentRoom.description)
 # Write a loop that:
 #
 # * Prints the current room name
@@ -49,3 +55,28 @@ room['treasure'].s_to = room['narrow']
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+
+print("\nUse your keyboard to command your character:\n   'n' goes North \n   'e' goes East\n   's' goes South\n   'w' goes West\n   and 'q' QUIT's the Game\nEnjoy your Adventure!\n")
+quit_game = False
+
+while not quit_game:
+
+    player.move = input('I want to: ').strip().split(" ")
+    firstChar = player.move[0]
+    player.move = firstChar[0]
+
+#currently not working--getting Error that I can't get there--change restrict code?
+    # if len(firstChar) == 2:
+    #     if firstChar == 'get ':
+    #         player.grabItem({Item.itemName})
+    #         player.currentRoom.itemList.remove({Item.itemName})
+    #     else:
+    #         player.dropItem({Item.itemName})
+    #         player.currentRoom.itemList.add({Item.itemName})
+
+    if firstChar == 'q':
+        print('Until next time, your adventure awaits!')
+        quit_game = True
+
+    else:
+        player.restrict()
