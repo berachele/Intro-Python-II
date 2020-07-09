@@ -35,16 +35,8 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
-#
-# Main
-
-#Testing Zone
-
 
 # Make a new player object that is currently in the 'outside' room.
-player = Player(room['outside'], 'none')
-print(player)
-print(player.currentRoom.description)
 # Write a loop that:
 #
 # * Prints the current room name
@@ -55,30 +47,33 @@ print(player.currentRoom.description)
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+player = Player(room['outside'], 'none')
+print(player)
+print(player.currentRoom.description)
 
 print("\nUse your keyboard to command your character:\n   'n' goes North \n   'e' goes East\n   's' goes South\n   'w' goes West\n   and 'q' QUIT's the Game\nEnjoy your Adventure!\n")
 quit_game = False
 
 while not quit_game:
+    player.move = input('I want to: ')
+    action = player.move.split(" ")
 
-    player.move = input('I want to: ').strip().split(" ")
-    firstChar = player.move[0]
-    print(f'firChar: {firstChar}')
-    player.move = firstChar[0]
-    print(f"player.move: {player.move}")
+    if len(action) == 2:
+        print('HITTING THIS IF--LEN IS 2')
+        if player.move == 'get ':
+            player.grabItem({Item.itemName})
+            player.currentRoom.itemList.remove({Item.itemName})
+        else:
+            player.dropItem({Item.itemName})
+            player.currentRoom.itemList.add({Item.itemName})
 
-#currently not working--getting 'Error! You can't move in that direction. Try again.'
-    # if len(firstChar) == 2:
-    #     if firstChar == 'get ':
-    #         player.grabItem({Item.itemName})
-    #         player.currentRoom.itemList.remove({Item.itemName})
-    #     else:
-    #         player.dropItem({Item.itemName})
-    #         player.currentRoom.itemList.add({Item.itemName})
-
-    if firstChar == 'q':
+    if player.move == 'q':
         print('Until next time, your adventure awaits!')
         quit_game = True
 
     else:
         player.restrict()
+
+        #need to figure out how it recognizes what item you are wanting to pick up
+        #go through array with items until it matches, then add to inventory
+        #otherwise, drop in room

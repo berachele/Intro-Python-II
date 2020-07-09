@@ -31,14 +31,14 @@ class Player:
 
 
 #TESTING
-player = Player(Room("outside", "asdfsdfklj", [Item("sword", "careful, it...Stings!")]), "none")
+# player = Player(Room("outside", "asdfsdfklj", [Item("sword", "careful, it...Stings!")]), "none")
 
-print(player.pouch)
+# print(player.pouch)
 
-player.grabItem("sword")
+# player.grabItem("sword")
 
-print(player.pouch)
+# print(player.pouch)
 
-player.dropItem("sword")
+# player.dropItem("sword")
 
-print(player.pouch)
+# print(player.pouch)
