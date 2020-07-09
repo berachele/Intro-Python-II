@@ -63,9 +63,11 @@ while not quit_game:
 
     player.move = input('I want to: ').strip().split(" ")
     firstChar = player.move[0]
+    print(f'firChar: {firstChar}')
     player.move = firstChar[0]
+    print(f"player.move: {player.move}")
 
-#currently not working--getting Error that I can't get there--change restrict code?
+#currently not working--getting 'Error! You can't move in that direction. Try again.'
     # if len(firstChar) == 2:
     #     if firstChar == 'get ':
     #         player.grabItem({Item.itemName})
